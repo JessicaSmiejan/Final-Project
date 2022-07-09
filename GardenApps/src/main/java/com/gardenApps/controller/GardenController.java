@@ -22,13 +22,14 @@ import lombok.Data;
  * @author anili
  *
  */
-@Data
 @RestController
 @RequestMapping("/gardenapp/garden")
 public class GardenController{
 
+  @Autowired
   private GardenService gardenService;
  
+
   public GardenController(GardenService gardenService) {
     super();
     this.gardenService=gardenService;

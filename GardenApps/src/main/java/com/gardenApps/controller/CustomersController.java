@@ -16,13 +16,12 @@ import com.gardenApps.service.CustomersService;
 import lombok.Data;
 
 
-  @Data
   @RestController
   @RequestMapping("/gardenapp/customers")
   public class CustomersController {
-
+    @Autowired
     private CustomersService customersService;
-   
+      
     public CustomersController(CustomersService customersService) {
       super();
       this.customersService= customersService;

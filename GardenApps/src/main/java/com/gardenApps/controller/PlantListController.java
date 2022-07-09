@@ -23,42 +23,34 @@ import lombok.Data;
  *
  */
 
- @RestController
-  @RequestMapping("/gardenapp/plantlist")
-  public class PlantListController {
-    
+@RestController
+  @RequestMapping("/gardenapp/zipcode")
+  public class ZipCodeController {
+
     @Autowired
-    private PlantListService plantListService;
-     
+    private ZipCodeService zipCodeService;
    
-    public PlantListController( PlantListService plantListService) {
+
+    public ZipCodeController(ZipCodeService zipCodeService) {
       super();
-      this. plantListService=  plantListService;
+      this.zipCodeService= zipCodeService;
       
     }
     
     @PostMapping()
-      public ResponseEntity<PlantList>savePlantList (@RequestBody PlantList plantList){
-        return new ResponseEntity<PlantList>(plantListService.savePlantList(plantList), HttpStatus.CREATED);
+      public ResponseEntity<ZipCode>saveZipCode (@RequestBody ZipCode zipCode){
+        return new ResponseEntity<ZipCode>(zipCodeService.saveZipCode(zipCode), HttpStatus.CREATED);
       }
      @GetMapping
-      public List<PlantList>getAllPlantList(){
-         return plantListService.getPlantList();
+      public List<ZipCode>getAllZipCode(){
+         return zipCodeService.getZipCode();
          
      }
-     @GetMapping("{listId}")
-     public ResponseEntity<PlantList> getPlantListById(@PathVariable("listId") int listId){
-         return new ResponseEntity<PlantList>(plantListService.getPlantListById(listId), HttpStatus.OK);
-     }
-     
-     @PutMapping("{listId}")
-     public ResponseEntity<PlantList> updatePlantList(@PathVariable("listId") int listId, @RequestBody PlantList plantList){
-       return new ResponseEntity<PlantList>(plantListService.updatePlantList(plantList, listId), HttpStatus.OK);
-     }
-     @DeleteMapping("{listId}")
-     public ResponseEntity<String> deletePlantList(@PathVariable("listId") int listId){
-       plantListService.deletePlantList(listId);
-         return new ResponseEntity<String>("List has been removed!", HttpStatus.OK);
+    
+        @DeleteMapping("{zipCode}")
+     public ResponseEntity<String> deleteAlbums(@PathVariable("zipCode") int zipCode){
+          zipCodeService.deleteZipCode(zipCode);
+         return new ResponseEntity<String>("Zip Code was  removed!", HttpStatus.OK);
    }
   }
 

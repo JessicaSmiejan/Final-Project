@@ -23,11 +23,13 @@ import lombok.Data;
  *
  */
 
-  @Data
-  @RestController
+ @RestController
   @RequestMapping("/gardenapp/plantlist")
   public class PlantListController {
+    
+    @Autowired
     private PlantListService plantListService;
+     
    
     public PlantListController( PlantListService plantListService) {
       super();
